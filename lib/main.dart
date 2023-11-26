@@ -15,77 +15,92 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ClothingItemScreen(),
-    );
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class ClothingItem {
-  final String name;
-  final String category;
-  final double price;
-  final String imageUrl;
-
-  ClothingItem({
-    required this.name,
-    required this.category,
-    required this.price,
-    required this.imageUrl,
-  });
-}
-
-class ClothingItemScreen extends StatelessWidget {
-  final ClothingItem clothingItem = ClothingItem(
-    name: 'Джинсовая куртка',
-    category: 'Верхняя одежда',
-    price: 79.99,
-    imageUrl: 'assets/denim_jacket.png',
-  );
-
+class _HomePageState extends State<HomePage> {
+  bool _isMessageNotificationEnabled = true;
+  bool _isNewSubscriberNotificationEnabled = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Магазин одежды'),
+        title: Text('Настройки профиля'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.asset(
-                clothingItem.imageUrl,
-                width: 200.0,
-                height: 200.0,
-                fit: BoxFit.cover,
+            Text(
+              'Личная информация',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16.0),
-            Text(
-              clothingItem.name,
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              clothingItem.category,
-              style: TextStyle(color: Colors.grey),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              '\$${clothingItem.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18.0, color: Colors.blue),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Добавьте обработчик для добавления товара в корзину или детали заказа
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Имя'),
+              subtitle: Text('Бобик'),
+              onTap: () {
+                // Обработка нажатия на изменение имени
               },
-              child: Text('Добавить в корзину'),
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('Электронная почта'),
+              subtitle: Text('example@example.com'),
+              onTap: () {
+                // Обработка нажатия на изменение электронной почты
+              },
+            ),
+            Divider(), // Горизонтальная линия-разделитель
+
+            Text(
+              'Безопасность',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('Изменить пароль'),
+              onTap: () {
+                // Обработка нажатия на изменение пароля
+              },
+            ),
+            Divider(),
+
+            Text(
+              'Настройки уведомлений',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SwitchListTile(
+              title: Text('Уведомления о новых сообщениях'),
+              value: _isMessageNotificationEnabled,
+              onChanged: (value) {
+                setState(() {
+                  _isMessageNotificationEnabled = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: Text('Уведомления о новых подписчиках'),
+              value: _isNewSubscriberNotificationEnabled,
+              onChanged: (value) {
+                setState(() {
+                  _isNewSubscriberNotificationEnabled = value;
+                });
+              },
             ),
           ],
         ),
