@@ -6,7 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,95 +15,94 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-
-
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isMessageNotificationEnabled = true;
-  bool _isNewSubscriberNotificationEnabled = false;
+  // Список для хранения выбранных ответов
+  List<bool> selectedAnswers = List.generate(4, (index) => false);
+
+  // Вопрос и варианты ответов
+  final String question = "Какие цвета надо смешать, чтобы получить фиолетовый цвет? Выберите несколько вариантов ответа.";
+  final List<String> answers = ["Синий", "Желтый", "Красный", "Белый"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Настройки профиля'),
+        title: Text('Exam_24'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Личная информация',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+              question,
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 16),
+            // Создаем чекбоксы для вариантов ответов
+            ...List.generate(
+              answers.length,
+                  (index) => CheckboxListTile(
+                title: Text(answers[index]),
+                value: selectedAnswers[index],
+                onChanged: (value) {
+                  setState(() {
+                    selectedAnswers[index] = value!;
+                  });
+                },
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Имя'),
-              subtitle: Text('Бобик'),
-              onTap: () {
-                // Обработка нажатия на изменение имени
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Проверяем, были ли выбраны правильные ответы
+                bool isCorrect = _checkAnswers();
+                _showResultDialog(isCorrect);
               },
-            ),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text('Электронная почта'),
-              subtitle: Text('example@example.com'),
-              onTap: () {
-                // Обработка нажатия на изменение электронной почты
-              },
-            ),
-            Divider(), // Горизонтальная линия-разделитель
-
-            Text(
-              'Безопасность',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.lock),
-              title: Text('Изменить пароль'),
-              onTap: () {
-                // Обработка нажатия на изменение пароля
-              },
-            ),
-            Divider(),
-
-            Text(
-              'Настройки уведомлений',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SwitchListTile(
-              title: Text('Уведомления о новых сообщениях'),
-              value: _isMessageNotificationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _isMessageNotificationEnabled = value;
-                });
-              },
-            ),
-            SwitchListTile(
-              title: Text('Уведомления о новых подписчиках'),
-              value: _isNewSubscriberNotificationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _isNewSubscriberNotificationEnabled = value;
-                });
-              },
+              child: Text('Проверить ответ'),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  // Метод для проверки правильности ответов
+  bool _checkAnswers() {
+    // Индексы правильных ответов (Синий и Красный)
+    List<int> correctAnswers = [0, 2];
+
+    // Проверяем, совпадают ли выбранные ответы с правильными
+    return List.generate(
+      answers.length,
+          (index) => selectedAnswers[index] == (correctAnswers.contains(index)),
+    ).every((element) => element);
+  }
+
+  // Метод для отображения диалогового окна с результатом
+  void _showResultDialog(bool isCorrect) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(isCorrect ? 'Верно!' : 'Ошибка!'),
+          content: isCorrect
+              ? Text('Ответ полностью верный.')
+              : Text('Ответ частично верный или неверный.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
