@@ -18,77 +18,62 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ClothingItemScreen(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Туристическое агентство'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: 100,
+              width: 100,
+                child: Image.asset(
+              'assets/TurAgent.png',
+            )),
+            SizedBox(height: 20),
+            Text(
+              'Путешествуй с нами',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Мы создаем незабываемые путешествия по всему миру. Выбери свое приключение!',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TourListScreen(),
+                  ),
+                );
+              },
+              child: Text('Просмотреть туры'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
-class ClothingItem {
-  final String name;
-  final String category;
-  final double price;
-  final String imageUrl;
-
-  ClothingItem({
-    required this.name,
-    required this.category,
-    required this.price,
-    required this.imageUrl,
-  });
-}
-
-class ClothingItemScreen extends StatelessWidget {
-  final ClothingItem clothingItem = ClothingItem(
-    name: 'Джинсовая куртка',
-    category: 'Верхняя одежда',
-    price: 79.99,
-    imageUrl: 'assets/denim_jacket.png',
-  );
-
+class TourListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Магазин одежды'),
+        title: Text('Доступные туры'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                clothingItem.imageUrl,
-                width: 200.0,
-                height: 200.0,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              clothingItem.name,
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              clothingItem.category,
-              style: TextStyle(color: Colors.grey),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              '\$${clothingItem.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18.0, color: Colors.blue),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Добавьте обработчик для добавления товара в корзину или детали заказа
-              },
-              child: Text('Добавить в корзину'),
-            ),
-          ],
-        ),
+      body: Center(
+        child: Text('Список туров будет здесь'),
       ),
     );
   }
