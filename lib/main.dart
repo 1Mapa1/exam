@@ -1,4 +1,4 @@
-import 'package:exam/first_screen.dart';
+import 'package:exam/video_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exam_1',
-      home: FirstScreen(),
+      title: 'Exam_4',
+      home: VideoScreen(),
     );
   }
 }
