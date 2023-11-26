@@ -16,91 +16,60 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-
-
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isMessageNotificationEnabled = true;
-  bool _isNewSubscriberNotificationEnabled = false;
+  double objectSize = 100.0;
+
+  // Увеличение размера объекта
+  void increaseSize() {
+    setState(() {
+      objectSize += 10.0;
+    });
+  }
+
+  // Уменьшение размера объекта
+  void decreaseSize() {
+    setState(() {
+      if (objectSize > 10.0) {
+        objectSize -= 10.0;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Настройки профиля'),
+        title: Text('Увеличение и уменьшение'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Личная информация',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
+            // Объект, размер которого будет изменяться
+            Container(
+              width: objectSize,
+              height: objectSize,
+              color: Colors.blue,
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Имя'),
-              subtitle: Text('Бобик'),
-              onTap: () {
-                // Обработка нажатия на изменение имени
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text('Электронная почта'),
-              subtitle: Text('example@example.com'),
-              onTap: () {
-                // Обработка нажатия на изменение электронной почты
-              },
-            ),
-            Divider(), // Горизонтальная линия-разделитель
-
-            Text(
-              'Безопасность',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.lock),
-              title: Text('Изменить пароль'),
-              onTap: () {
-                // Обработка нажатия на изменение пароля
-              },
-            ),
-            Divider(),
-
-            Text(
-              'Настройки уведомлений',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SwitchListTile(
-              title: Text('Уведомления о новых сообщениях'),
-              value: _isMessageNotificationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _isMessageNotificationEnabled = value;
-                });
-              },
-            ),
-            SwitchListTile(
-              title: Text('Уведомления о новых подписчиках'),
-              value: _isNewSubscriberNotificationEnabled,
-              onChanged: (value) {
-                setState(() {
-                  _isNewSubscriberNotificationEnabled = value;
-                });
-              },
+            SizedBox(height: 20),
+            // Кнопки для увеличения и уменьшения размера
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: increaseSize,
+                  child: Icon(Icons.add),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: decreaseSize,
+                  child: Icon(Icons.remove),
+                ),
+              ],
             ),
           ],
         ),
