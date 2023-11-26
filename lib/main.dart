@@ -1,4 +1,4 @@
-import 'package:exam/first_screen.dart';
+import 'package:exam/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Exam_1',
-      home: FirstScreen(),
+      home: LoginScreen(),
     );
   }
 }
