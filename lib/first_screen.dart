@@ -1,30 +1,28 @@
-import 'package:exam/second_screen.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget{
 
-  @override
-  Widget build(BuildContext context){
+   @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Экран 1"),
+        title: Text('Home Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blueAccent)
-              ),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
-              },
-              child: const Text('Нажми на меня'),
+            Text(
+              'This is a sample text',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            Text(
+              'Another sample text',
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),
-      )
+      ),
     );
   }
 }
