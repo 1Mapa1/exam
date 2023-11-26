@@ -19,18 +19,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ClothingItemScreen(),
+      home: CosmeticStoreScreen(),
     );
   }
 }
 
-class ClothingItem {
+class Cosmetic {
   final String name;
   final String category;
   final double price;
   final String imageUrl;
 
-  ClothingItem({
+  Cosmetic({
     required this.name,
     required this.category,
     required this.price,
@@ -38,58 +38,68 @@ class ClothingItem {
   });
 }
 
-class ClothingItemScreen extends StatelessWidget {
-  final ClothingItem clothingItem = ClothingItem(
-    name: 'Джинсовая куртка',
-    category: 'Верхняя одежда',
-    price: 79.99,
-    imageUrl: 'assets/denim_jacket.png',
-  );
+class CosmeticStoreScreen extends StatelessWidget {
+  final List<Cosmetic> cosmetics = [
+    Cosmetic(
+      name: 'Тональный крем',
+      category: 'Основа',
+      price: 25.99,
+      imageUrl: 'assets/tonal_cream.png',
+    ),
+    Cosmetic(
+      name: 'Помада',
+      category: 'Губы',
+      price: 12.50,
+      imageUrl: 'assets/lipstick.png',
+    ),
+    Cosmetic(
+      name: 'Тени для век',
+      category: 'Глаза',
+      price: 18.75,
+      imageUrl: 'assets/eyeshadow.png',
+    ),
+    // Добавьте больше товаров по аналогии
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Магазин одежды'),
+        title: Text('Магазин косметики'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                clothingItem.imageUrl,
-                width: 200.0,
-                height: 200.0,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              clothingItem.name,
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              clothingItem.category,
-              style: TextStyle(color: Colors.grey),
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              '\$${clothingItem.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18.0, color: Colors.blue),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Добавьте обработчик для добавления товара в корзину или детали заказа
-              },
-              child: Text('Добавить в корзину'),
-            ),
-          ],
-        ),
+      body: ListView.builder(
+        itemCount: cosmetics.length,
+        itemBuilder: (context, index) {
+          return CosmeticItem(cosmetic: cosmetics[index]);
+        },
       ),
     );
   }
 }
+
+class CosmeticItem extends StatelessWidget {
+  final Cosmetic cosmetic;
+
+  CosmeticItem({required this.cosmetic});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: ListTile(
+        leading: Image.asset(
+          cosmetic.imageUrl,
+          width: 60.0,
+          height: 60.0,
+          fit: BoxFit.cover,
+        ),
+        title: Text(cosmetic.name),
+        subtitle: Text('${cosmetic.category} - \$${cosmetic.price.toStringAsFixed(2)}'),
+        onTap: () {
+          // Обработка нажатия на продукт (переход к деталям, например)
+        },
+      ),
+    );
+  }
+}
+
