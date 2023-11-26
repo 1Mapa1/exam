@@ -18,74 +18,58 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ClothingItemScreen(),
-    );
-  }
-}
-
-class ClothingItem {
-  final String name;
-  final String category;
-  final double price;
-  final String imageUrl;
-
-  ClothingItem({
-    required this.name,
-    required this.category,
-    required this.price,
-    required this.imageUrl,
-  });
-}
-
-class ClothingItemScreen extends StatelessWidget {
-  final ClothingItem clothingItem = ClothingItem(
-    name: 'Джинсовая куртка',
-    category: 'Верхняя одежда',
-    price: 79.99,
-    imageUrl: 'assets/denim_jacket.png',
-  );
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Магазин одежды'),
+        title: Text('Подробности о квартире'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.asset(
-                clothingItem.imageUrl,
-                width: 200.0,
-                height: 200.0,
-                fit: BoxFit.cover,
-              ),
+            // Изображение квартиры
+            Image.asset(
+              'assets/apt.png',
+              height: 300,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 16),
+            // Информация о квартире
             Text(
-              clothingItem.name,
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              '3-комнатная квартира, Центр города',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            SizedBox(height: 8),
+            // Описание квартиры
             Text(
-              clothingItem.category,
-              style: TextStyle(color: Colors.grey),
+              'Прекрасная квартира в самом центре города. '
+                  'Большие светлые комнаты, красивый вид из окон.',
+              style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 8.0),
+            SizedBox(height: 16),
+            // Информация о цене и условиях аренды
             Text(
-              '\$${clothingItem.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18.0, color: Colors.blue),
+              'Стоимость аренды: \$1200/месяц',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Добавьте обработчик для добавления товара в корзину или детали заказа
-              },
-              child: Text('Добавить в корзину'),
+            Text(
+              'Залог: \$1500',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 16),
+            // Контактная информация
+            Text(
+              'Свяжитесь с нами для дополнительной информации:',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              'Телефон: +1 123-456-7890',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              'Email: info@example.com',
+              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
