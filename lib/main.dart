@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exam_4',
+      title: 'Exam_6',
+      //Указывается экран который откроется
       home: VideoScreen(),
     );
   }
