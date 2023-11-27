@@ -1,3 +1,3 @@
 # Описание
 
-Переход между экранами происходит за счет Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
+Добавил библиотеку video_player: ^2.8.1 в файл pubspec.yaml, для работы с видео
