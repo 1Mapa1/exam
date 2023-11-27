@@ -61,11 +61,13 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  //Указываем функция которая будет работать по нажатию
                   onPressed: increaseSize,
                   child: Icon(Icons.add),
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
+                  //Указываем функция которая будет работать по нажатию
                   onPressed: decreaseSize,
                   child: Icon(Icons.remove),
                 ),
