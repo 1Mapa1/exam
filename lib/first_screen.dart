@@ -5,6 +5,7 @@ class FirstScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return  Scaffold(
+      //Вверхнее поле экрана
       appBar: AppBar(
         title: Text('Простой Калькулятор'),
       ),
@@ -79,6 +80,8 @@ class FirstScreen extends StatelessWidget{
 
     
   }
+
+  //Выносим код в отдельный виджет который будем использовать выще, тк данный виджет повторяется
   Widget buildButton(String buttonText) {
     return Expanded(
       
