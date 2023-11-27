@@ -6,18 +6,20 @@ class FirstScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Привет'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'This is a sample text',
+              'Как дела?',
+              //Выставляем темы которые сделали в main
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             Text(
-              'Another sample text',
+              'Не фантан но брызги есть',
+              //Выставляем темы которые сделали в main
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],

@@ -8,19 +8,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exam_1',
+      title: 'Exam_12',
       theme: ThemeData(
+        //Основной цвет
         primarySwatch: Colors.blue,
+        //автоматически адаптирует плотность элементов интерфейса под платформу
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        //Текстовые темы
         textTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.red),
           bodyMedium: TextStyle(color: Colors.green),
         ),
       ),
+      //Указываем экран который откроется
       home: FirstScreen(),
     );
   }
