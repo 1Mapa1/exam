@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-
+//Создаем StatefulWidget, чтобы экран после нажатию на кнопку обновлялся
 class VideoScreen extends StatefulWidget {
   @override
   _VideoScreenState createState() => _VideoScreenState();
