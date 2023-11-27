@@ -1,3 +1,8 @@
 # Описание
 
-Переход между экранами происходит за счет Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
+Добавил в файл pubspec.yaml вот такие строчки, чтобы указать путь на хранения данных
+
+# assets:
+    ## - assets/
+
+Так же создал файл assets в который поместил изображения

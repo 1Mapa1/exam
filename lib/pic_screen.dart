@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class PicScreen extends StatelessWidget {
   @override
@@ -12,6 +11,7 @@ class PicScreen extends StatelessWidget {
 }
 
 class ImageListScreen extends StatelessWidget {
+  //Указываем список ссылок на файлы
   final List<String> imagePaths = [
     'assets/pic1.jpg',
     'assets/pic2.png',
@@ -26,6 +26,7 @@ class ImageListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Image List'),
       ),
+      //Функция которая автоматом приобразует список в картинки и даст им прокручиваться
       body: ListView.builder(
         itemCount: imagePaths.length,
         itemBuilder: (context, index) {
