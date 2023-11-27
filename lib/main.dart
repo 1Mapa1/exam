@@ -24,6 +24,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
+
+//Создаем класс для удобного хранения данных
 class Cosmetic {
   final String name;
   final String category;
@@ -61,15 +63,18 @@ class CosmeticStoreScreen extends StatelessWidget {
     // Добавьте больше товаров по аналогии
   ];
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Магазин косметики'),
       ),
+      //Автоматически в зависимости от передаваемых списков выводит информацию из них
       body: ListView.builder(
         itemCount: cosmetics.length,
         itemBuilder: (context, index) {
+          //Прописываем виджет созданый ниже
           return CosmeticItem(cosmetic: cosmetics[index]);
         },
       ),
@@ -77,6 +82,8 @@ class CosmeticStoreScreen extends StatelessWidget {
   }
 }
 
+
+// Создаем отдельный виджет для более удобного редактирования
 class CosmeticItem extends StatelessWidget {
   final Cosmetic cosmetic;
 
@@ -87,6 +94,7 @@ class CosmeticItem extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(8.0),
       child: ListTile(
+        //Вызываем изображение которые мы сохранили в папку
         leading: Image.asset(
           cosmetic.imageUrl,
           width: 60.0,
