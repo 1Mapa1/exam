@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget { 
-
+  //Список элеметов
   final List<String> items = [ 
     'Item 1', 
     'Item 2', 
@@ -23,9 +23,11 @@ class FirstScreen extends StatelessWidget {
         appBar: AppBar( 
           title: Text('List View Example'), 
         ), 
+        //Функция которая автоматически из списка сделает элементы
         body: ListView.builder( 
           itemCount: items.length, 
           itemBuilder: (BuildContext context, int index) { 
+            //То что указываем тут то и выводится
             return ListTile( 
               title: Text(items[index]), 
             ); 
