@@ -10,11 +10,15 @@ class FirstScreen extends StatelessWidget{
       ), 
       body: Center( 
         child: Column( 
+          //Чтобы было по цуентру
           mainAxisAlignment: MainAxisAlignment.center, 
+          //кнопки для вызова окон
           children: [ 
+            
             ElevatedButton( 
               child: Text('Показать диалоговое окно'), 
               onPressed: () { 
+                //Вызыывает диалоговое окно
                 showDialog( 
                   context: context, 
                   builder: (BuildContext context) { 
@@ -25,6 +29,7 @@ class FirstScreen extends StatelessWidget{
                         TextButton( 
                           child: Text('ОК'), 
                           onPressed: () { 
+                            //По нажатие на "Ок" закрывает окно
                             Navigator.of(context).pop(); 
                           }, 
                         ), 
@@ -37,6 +42,7 @@ class FirstScreen extends StatelessWidget{
             ElevatedButton( 
               child: Text('Показать уведомление (5 секунд)'), 
               onPressed: () { 
+                //Вызыывает всплывающий элемент
                 final snackBar = SnackBar( 
                   content: Text('Это всплывающее уведомление.'), 
                   duration: Duration(seconds: 5), 
@@ -47,6 +53,7 @@ class FirstScreen extends StatelessWidget{
             ElevatedButton( 
               child: Text('Показать уведомление (10 секунд)'), 
               onPressed: () { 
+                //Вызыывает всплывающий элемент
                 final snackBar = SnackBar( 
                   content: Text('Это всплывающее уведомление.'), 
                   duration: Duration(seconds: 10), 
