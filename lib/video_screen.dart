@@ -10,7 +10,7 @@ class _VideoScreenState extends State<VideoScreen> {
   //Создаем контроллер в котором хранится видио
   late VideoPlayerController _controller = VideoPlayerController.networkUrl(
         // Сдесь указывается ссылка
-        Uri.parse('https://cdn.discordapp.com/attachments/761299040851460108/1178424184074940608/Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Music_Video.mp4'))
+        Uri.parse('https://cdn.discordapp.com/attachments/761299040851460108/1178430651058368512/1.mp4'))
         //Сдесь указывается функции которые сработают после загрузки видео с интернета
       ..initialize().then((_) {
         //Видио начинает проигрываться
