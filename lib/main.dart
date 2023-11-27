@@ -25,12 +25,14 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          //Выравниваем по центру
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               height: 100,
               width: 100,
+              //Изображение которое мы сохранили в файл
                 child: Image.asset(
               'assets/TurAgent.png',
             )),
@@ -49,6 +51,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
+                //Переход на другую страницу
                 Navigator.push(
                   context,
                   MaterialPageRoute(
