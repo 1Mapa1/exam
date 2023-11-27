@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Создаем StatefulWidget, чтобы экран после нажатию на кнопку обновлялся
 class RegistrationScreen extends StatefulWidget { 
 
   @override 
@@ -8,6 +9,8 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> { 
 
+
+  //Контролеры для отслеживания что ввел пользователь в текстовые поля соответсвено
   final TextEditingController _nameController = TextEditingController(); 
   final TextEditingController _emailController = TextEditingController(); 
   final TextEditingController _passwordController = TextEditingController(); 
