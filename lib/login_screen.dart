@@ -7,15 +7,19 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) { 
 
     return Scaffold( 
+      //Данный атрибут нужен, чтобы элементы не смещались при выдвигание клавиатуры
       resizeToAvoidBottomInset: false,
+      //Вверхнее поле экрана
       appBar: AppBar( 
         title: const Text('Авторизация'), 
       ), 
       body: Padding( 
         padding: const EdgeInsets.all(16.0), 
         child: Column( 
+          //Данный виджет нужен, чтобы элементы были по центру по вертикале
           mainAxisAlignment: MainAxisAlignment.center, 
           children: <Widget>[ 
+            //Поле для ввода
             const TextField( 
               decoration: InputDecoration( 
                 labelText: 'Имя пользователя', 
