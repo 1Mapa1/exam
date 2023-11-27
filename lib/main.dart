@@ -24,6 +24,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
+
+//Создаем класс для удобного хранения данных
 class ClothingItem {
   final String name;
   final String category;
@@ -58,6 +60,7 @@ class ClothingItemScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
+              //Вызываем сохраненое изображение
               child: Image.asset(
                 clothingItem.imageUrl,
                 width: 200.0,
