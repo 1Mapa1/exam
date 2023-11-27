@@ -1,3 +1,10 @@
 # Описание
 
-Переход между экранами происходит за счет Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
+Добавил библиотеку audioplayers: ^5.2.1 в файл pubspec.yaml, для работы с видео
+
+Добавил в файл  pubspec.yaml вот такие строчки, чтобы указать путь на хранения данных 
+
+# assets: 
+    - assets/
+
+Так же создал файл assets в который поместил аудиофайлы
