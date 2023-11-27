@@ -13,9 +13,10 @@ class FirstScreen extends StatelessWidget{
       ),
       body: Center(
         child: Column(
-          //Чтобы элементы по центру экрана (по вертикале)
+          //Чтобы элементы были по центру экрана (по вертикале)
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //Кнопка
+            
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blueAccent)
